@@ -95,6 +95,18 @@ export default function Router() {
           ],
         },
         {
+          path: 'users',
+          children: [
+            { element: <Navigate to="/dashboard/user/profile" replace />, index: true },
+            { path: 'profile', element: <UserProfile /> },
+            { path: 'cards', element: <UserCards /> },
+            { path: 'list', element: <UserList /> },
+            { path: 'new', element: <UserCreate /> },
+            { path: ':name/edit', element: <UserCreate /> },
+            { path: 'account', element: <UserAccount /> },
+          ],
+        },
+        {
           path: 'invoice',
           children: [
             { element: <Navigate to="/dashboard/invoice/list" replace />, index: true },
