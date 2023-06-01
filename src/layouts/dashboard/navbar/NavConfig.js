@@ -22,6 +22,7 @@ const ICONS = {
   ecommerce: getIcon('ic_ecommerce'),
   analytics: getIcon('ic_analytics'),
   dashboard: getIcon('ic_dashboard'),
+  item: getIcon('ic_item'),
 };
 
 const navConfig = [
@@ -56,7 +57,7 @@ const navConfig = [
       },
     ],
   },
-  // MANAGEMENT
+  // MANAGEMENTS
   // ----------------------------------------------------------------------
   {
     subheader: 'managements',
@@ -73,6 +74,17 @@ const navConfig = [
           { title: 'create', path: PATH_DASHBOARD.user.new },
           { title: 'edit', path: PATH_DASHBOARD.user.demoEdit },
           { title: 'account', path: PATH_DASHBOARD.user.account },
+        ],
+      },
+      // Master Produk
+      {
+        title: 'item',
+        path: PATH_DASHBOARD.MasterItem.root,
+        icon: ICONS.ecommerce,
+        children: [
+          { title: 'list', path: PATH_DASHBOARD.MasterItem.list },
+          { title: 'create', path: PATH_DASHBOARD.MasterItem.new },
+          { title: 'edit', path: PATH_DASHBOARD.MasterItem.demoEdit },
         ],
       },
     ],
