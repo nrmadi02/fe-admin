@@ -6,35 +6,35 @@ import { PATH_DASHBOARD } from '../../routes/paths';
 // hooks
 import useSettings from '../../hooks/useSettings';
 // _mock_
-import { _invoices } from '../../_mock';
+import { _sales } from '../../_mock';
 // components
 import Page from '../../components/Page';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 // sections
-import InvoiceNewEditForm from '../../sections/@dashboard/invoice/new-edit-form';
+import SalesNewEditForm from '../../sections/@dashboard/_sales/new-edit-form';
 
 // ----------------------------------------------------------------------
 
-export default function InvoiceEdit() {
+export default function SalesEdit() {
   const { themeStretch } = useSettings();
 
   const { id } = useParams();
 
-  const currentInvoice = _invoices.find((invoice) => invoice.id === id);
+  const currentSales = _sales.find((sales) => sales.id === id);
 
   return (
-    <Page title="Invoices: Edit">
+    <Page title="Sales: Edit">
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <HeaderBreadcrumbs
-          heading="Edit invoice"
+          heading="Edit sales"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Invoices', href: PATH_DASHBOARD.invoice.list },
-            { name: currentInvoice?.invoiceNumber || '' },
+            { name: 'Sales', href: PATH_DASHBOARD.sales.list },
+            { name: currentSales?.SalesNumber || '' },
           ]}
         />
 
-        <InvoiceNewEditForm isEdit currentInvoice={currentInvoice} />
+        <SalesNewEditForm isEdit currentsales={currentSales} />
       </Container>
     </Page>
   );
