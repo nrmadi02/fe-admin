@@ -22,7 +22,6 @@ const ICONS = {
   ecommerce: getIcon('ic_ecommerce'),
   analytics: getIcon('ic_analytics'),
   dashboard: getIcon('ic_dashboard'),
-  item: getIcon('ic_item'),
 };
 
 const navConfig = [
@@ -53,38 +52,6 @@ const navConfig = [
           { title: 'details', path: PATH_DASHBOARD.sales.demoView },
           { title: 'create', path: PATH_DASHBOARD.sales.new },
           { title: 'edit', path: PATH_DASHBOARD.sales.demoEdit },
-        ],
-      },
-    ],
-  },
-  // MANAGEMENTS
-  // ----------------------------------------------------------------------
-  {
-    subheader: 'managements',
-    items: [
-      // USER
-      {
-        title: 'user',
-        path: PATH_DASHBOARD.user.root,
-        icon: ICONS.user,
-        children: [
-          { title: 'profile', path: PATH_DASHBOARD.user.profile },
-          { title: 'cards', path: PATH_DASHBOARD.user.cards },
-          { title: 'list', path: PATH_DASHBOARD.user.list },
-          { title: 'create', path: PATH_DASHBOARD.user.new },
-          { title: 'edit', path: PATH_DASHBOARD.user.demoEdit },
-          { title: 'account', path: PATH_DASHBOARD.user.account },
-        ],
-      },
-      // Master Produk
-      {
-        title: 'item',
-        path: PATH_DASHBOARD.MasterItem.root,
-        icon: ICONS.ecommerce,
-        children: [
-          { title: 'list', path: PATH_DASHBOARD.MasterItem.list },
-          { title: 'create', path: PATH_DASHBOARD.MasterItem.new },
-          { title: 'edit', path: PATH_DASHBOARD.MasterItem.demoEdit },
         ],
       },
     ],

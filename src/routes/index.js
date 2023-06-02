@@ -83,30 +83,7 @@ export default function Router() {
           ],
         },
         {
-          path: 'item',
-          children: [
-            { element: <Navigate to="/dashboard/item/shop" replace />, index: true },
-            { path: 'shop', element: <ItemShop /> },
-            { path: 'item/:name', element: <ItemDetails /> },
-            { path: 'list', element: <ItemList /> },
-            { path: 'item/new', element: <ItemCreate /> },
-            { path: 'item/:name/edit', element: <ItemCreate /> },
-          ],
-        },
-        {
           path: 'user',
-          children: [
-            { element: <Navigate to="/dashboard/user/profile" replace />, index: true },
-            { path: 'profile', element: <UserProfile /> },
-            { path: 'cards', element: <UserCards /> },
-            { path: 'list', element: <UserList /> },
-            { path: 'new', element: <UserCreate /> },
-            { path: ':name/edit', element: <UserCreate /> },
-            { path: 'account', element: <UserAccount /> },
-          ],
-        },
-        {
-          path: 'users',
           children: [
             { element: <Navigate to="/dashboard/user/profile" replace />, index: true },
             { path: 'profile', element: <UserProfile /> },

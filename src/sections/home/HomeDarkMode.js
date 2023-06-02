@@ -63,7 +63,7 @@ export default function HomeDarkMode() {
 
               <m.div variants={varFade().inUp}>
                 <Typography variant="h2" sx={{ mb: 3, color: 'common.white' }}>
-                  Dark mode90
+                  Dark mode
                 </Typography>
               </m.div>
 
