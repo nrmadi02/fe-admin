@@ -9,40 +9,40 @@ import { isValidToken, setSession } from '../utils/jwt';
 const initialState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null,
+  token: null,
 };
 
 const handlers = {
   INITIALIZE: (state, action) => {
-    const { isAuthenticated, user } = action.payload;
+    const { isAuthenticated, token } = action.payload;
     return {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user,
+      token,
     };
   },
   LOGIN: (state, action) => {
-    const { user } = action.payload;
+    const { token } = action.payload;
 
     return {
       ...state,
       isAuthenticated: true,
-      user,
+      token,
     };
   },
   LOGOUT: (state) => ({
     ...state,
     isAuthenticated: false,
-    user: null,
+    token: null,
   }),
   REGISTER: (state, action) => {
-    const { user } = action.payload;
+    const { token } = action.payload;
 
     return {
       ...state,
       isAuthenticated: true,
-      user,
+      token,
     };
   },
 };
@@ -74,14 +74,14 @@ function AuthProvider({ children }) {
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
 
-          const response = await axios.get('/api/account/my-account');
-          const { user } = response.data;
+          // const response = await axios.get('/api/account/my-account');
+          // const { user } = response.data;
 
           dispatch({
             type: 'INITIALIZE',
             payload: {
               isAuthenticated: true,
-              user,
+              token: accessToken,
             },
           });
         } else {
@@ -89,7 +89,7 @@ function AuthProvider({ children }) {
             type: 'INITIALIZE',
             payload: {
               isAuthenticated: false,
-              user: null,
+              token: null,
             },
           });
         }
@@ -99,7 +99,7 @@ function AuthProvider({ children }) {
           type: 'INITIALIZE',
           payload: {
             isAuthenticated: false,
-            user: null,
+            token: null,
           },
         });
       }
@@ -109,17 +109,27 @@ function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    const response = await axios.post('/api/account/login', {
-      email,
-      password,
-    });
-    const { accessToken, user } = response.data;
+    const response = await axios.post(
+      '/auth/signin',
+      {
+        username: email,
+        password: password,
+      },
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    const { Data } = response.data;
 
-    setSession(accessToken);
+    setSession(Data.access_token);
     dispatch({
       type: 'LOGIN',
       payload: {
-        user,
+        token: Data.access_token,
       },
     });
   };

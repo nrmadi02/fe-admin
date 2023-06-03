@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
+
 // form
 import { useFormContext } from 'react-hook-form';
 // @mui
-import { Stack, Divider, Typography, Button } from '@mui/material';
+import { Stack, Divider, Typography, Button, MenuItem } from '@mui/material';
+import { RHFSelect } from '../../../../components/hook-form';
 // hooks
 import useResponsive from '../../../../hooks/useResponsive';
 import useToggle from '../../../../hooks/useToggle';
@@ -13,9 +15,13 @@ import Iconify from '../../../../components/Iconify';
 //
 import InvoiceAddressListDialog from './SalesAddressListDialog';
 
+
 // ----------------------------------------------------------------------
 
+const SERVICE_OPTIONS = ['Jasa', 'Item', 'Charge', 'FA'];
+
 export default function InvoiceNewEditAddress() {
+
   const {
     watch,
     setValue,
@@ -62,35 +68,88 @@ export default function InvoiceNewEditAddress() {
       </Stack>
 
       <Stack sx={{ width: 1 }}>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1 }}>
-          <Typography variant="h6" sx={{ color: 'text.disabled' }}>
-            To:
-          </Typography>
-
-          <Button
-            size="small"
-            startIcon={<Iconify icon={invoiceTo ? 'eva:edit-fill' : 'eva:plus-fill'} />}
-            onClick={onOpenTo}
-          >
-            {invoiceTo ? 'Change' : 'Add'}
-          </Button>
-
-          <InvoiceAddressListDialog
-            open={openTo}
-            onClose={onCloseTo}
-            selected={(selectedId) => invoiceTo?.id === selectedId}
-            onSelect={(address) => setValue('invoiceTo', address)}
-            addressOptions={_invoiceAddressTo}
-          />
+        <Stack width="100%" spacing={3} direction="column" alignItems="center" justifyContent="end" sx={{ mb: 1 }}>
+          <Stack width="100%" spacing={3} direction="row" justifyContent="end" alignItems="center">
+            <p>Select 1</p>
+            <RHFSelect
+              name={`item.2`}
+              label="Service type"
+              size="small"
+              InputLabelProps={{ shrink: true }}
+              SelectProps={{ native: false, sx: { textTransform: 'capitalize' } }}
+              sx={{ maxWidth: { md: 160 } }}
+            >
+              <MenuItem
+                value=""
+                sx={{
+                  mx: 1,
+                  borderRadius: 0.75,
+                  typography: 'body2',
+                  fontStyle: 'italic',
+                  color: 'text.secondary',
+                }}
+              >
+                None
+              </MenuItem>
+              <Divider />
+              {SERVICE_OPTIONS.map((option) => (
+                <MenuItem
+                  key={option}
+                  value={option}
+                  sx={{
+                    mx: 1,
+                    my: 0.5,
+                    borderRadius: 0.75,
+                    typography: 'body2',
+                    textTransform: 'capitalize',
+                  }}
+                >
+                  {option}
+                </MenuItem>
+              ))}
+            </RHFSelect>
+          </Stack>
+          <Stack width="100%" spacing={3} direction="row" justifyContent="end" alignItems="center">
+            <p>Select 1</p>
+            <RHFSelect
+              name={`item.2`}
+              label="Service type"
+              size="small"
+              InputLabelProps={{ shrink: true }}
+              SelectProps={{ native: false, sx: { textTransform: 'capitalize' } }}
+              sx={{ maxWidth: { md: 160 } }}
+            >
+              <MenuItem
+                value=""
+                sx={{
+                  mx: 1,
+                  borderRadius: 0.75,
+                  typography: 'body2',
+                  fontStyle: 'italic',
+                  color: 'text.secondary',
+                }}
+              >
+                None
+              </MenuItem>
+              <Divider />
+              {SERVICE_OPTIONS.map((option) => (
+                <MenuItem
+                  key={option}
+                  value={option}
+                  sx={{
+                    mx: 1,
+                    my: 0.5,
+                    borderRadius: 0.75,
+                    typography: 'body2',
+                    textTransform: 'capitalize',
+                  }}
+                >
+                  {option}
+                </MenuItem>
+              ))}
+            </RHFSelect>
+          </Stack>
         </Stack>
-
-        {invoiceTo ? (
-          <AddressInfo name={invoiceTo.name} address={invoiceTo.address} phone={invoiceTo.phone} />
-        ) : (
-          <Typography typography="caption" sx={{ color: 'error.main' }}>
-            {errors.invoiceTo ? errors.invoiceTo.message : null}
-          </Typography>
-        )}
       </Stack>
     </Stack>
   );
