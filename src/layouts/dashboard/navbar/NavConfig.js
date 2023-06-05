@@ -29,8 +29,24 @@ const navConfig = [
   // ----------------------------------------------------------------------
   {
     subheader: 'general',
+    items: [{ title: 'app', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard }],
+  },
+
+  {
+    subheader: 'company',
     items: [
-      { title: 'app', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard },
+      // Sales
+      {
+        title: 'company',
+        path: PATH_DASHBOARD.company.root,
+        icon: ICONS.banking,
+        children: [
+          { title: 'list', path: PATH_DASHBOARD.company.list },
+          // { title: 'details', path: PATH_DASHBOARD.sales.demoView },
+          // { title: 'create', path: PATH_DASHBOARD.sales.new },
+          // { title: 'edit', path: PATH_DASHBOARD.sales.demoEdit },
+        ],
+      },
     ],
   },
   // SALES ORDER
@@ -38,7 +54,7 @@ const navConfig = [
   {
     subheader: 'order',
     items: [
-  // Sales
+      // Sales
       {
         title: 'sales orders',
         path: PATH_DASHBOARD.sales.root,

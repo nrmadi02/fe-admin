@@ -2,11 +2,12 @@ import { useParams } from 'react-router-dom';
 // @mui
 import { Container } from '@mui/material';
 // routes
+import { _sales } from '../../_mock';
 import { PATH_DASHBOARD } from '../../routes/paths';
 // hooks
 import useSettings from '../../hooks/useSettings';
 // _mock_
-import { _sales } from 'src/_mock';
+
 // components
 import Page from '../../components/Page';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';

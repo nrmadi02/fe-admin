@@ -113,7 +113,7 @@ function AuthProvider({ children }) {
       '/auth/signin',
       {
         username: email,
-        password: password,
+        password,
       },
       {
         headers: {

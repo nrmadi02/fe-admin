@@ -95,6 +95,13 @@ export default function Router() {
           ],
         },
         {
+          path: 'company',
+          children: [
+            { element: <Navigate to="/dashboard/company/list" replace />, index: true },
+            { path: 'list', element: <CompanyList /> },
+          ],
+        },
+        {
           path: 'invoice',
           children: [
             { element: <Navigate to="/dashboard/invoice/list" replace />, index: true },
@@ -195,6 +202,8 @@ const EcommerceProductDetails = Loadable(lazy(() => import('../pages/dashboard/E
 const EcommerceProductList = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductList')));
 const EcommerceProductCreate = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductCreate')));
 const EcommerceCheckout = Loadable(lazy(() => import('../pages/dashboard/EcommerceCheckout')));
+
+const CompanyList = Loadable(lazy(() => import('../pages/dashboard/_CompanyList')));
 
 // INVOICE
 const InvoiceList = Loadable(lazy(() => import('../pages/dashboard/InvoiceList')));
